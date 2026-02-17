@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Interactive Resume
 
-## Getting Started
+An AI-powered interactive resume that lets recruiters and hiring managers chat with an AI to learn about your professional background. Built with Next.js, Tailwind CSS, and OpenAI.
 
-First, run the development server:
+## Features
+
+- **AI Chat Interface** — Recruiters can ask questions and get natural, first-person responses about your experience
+- **Streaming Responses** — Real-time AI response streaming for a smooth chat experience
+- **Suggested Questions** — Pre-built question chips guide recruiters to ask the right things
+- **Visual Resume Sections** — Traditional resume layout with experience timeline, skills grid, education, and certifications
+- **Dark/Light Mode** — Toggle between themes, dark mode by default
+- **Fully Responsive** — Works beautifully on desktop, tablet, and mobile
+- **Smooth Animations** — Framer Motion powered scroll animations and transitions
+- **Single Data Source** — One TypeScript file powers both the AI chatbot and visual resume
+
+## Quick Start
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Add Your OpenAI API Key
+
+Create a `.env.local` file (already generated) and add your API key:
+
+```
+OPENAI_API_KEY=sk-your-actual-api-key-here
+```
+
+Get a key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
+### 3. Customize Your Resume Data
+
+Edit `lib/resume-data.ts` with your real information. This single file powers everything:
+
+- **Personal Info** — Name, title, location, contact details, tagline
+- **Experience** — Job history with achievements and technologies
+- **Skills** — Categorized technical and soft skills
+- **Education** — Degrees and academic achievements
+- **Certifications** — Professional certifications
+- **Projects** — Notable projects and open source work
+- **Target Role** — What you're looking for and your elevator pitch
+- **Suggested Questions** — Questions shown to recruiters in the chat
+
+### 4. Update Metadata
+
+In `app/layout.tsx`, update the `metadata` object with your name and description for SEO and social sharing.
+
+### 5. Run the Dev Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your interactive resume.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx            — Root layout with fonts and theme provider
+  page.tsx              — Main page composing all sections
+  globals.css           — Tailwind + custom styles and design tokens
+  api/chat/route.ts     — OpenAI streaming API endpoint
 
-## Learn More
+components/
+  navbar.tsx            — Sticky navigation with theme toggle
+  hero.tsx              — Hero section with stats and CTAs
+  chat-section.tsx      — AI chat interface wrapper
+  chat-messages.tsx     — Message list with markdown rendering
+  chat-input.tsx        — Input bar with suggested questions
+  experience.tsx        — Work experience timeline
+  skills.tsx            — Skills grid by category
+  education.tsx         — Education and certifications
+  contact-footer.tsx    — Contact links and CTA
+  theme-toggle.tsx      — Dark/light mode toggle
+  providers.tsx         — Theme provider wrapper
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+  resume-data.ts        — YOUR resume content (edit this!)
+  build-system-prompt.ts — Converts resume data to AI system prompt
+  utils.ts              — Shared utilities
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment to Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and import your repository
+3. Add the `OPENAI_API_KEY` environment variable in Vercel project settings
+4. Deploy — your site will be live at `your-project.vercel.app`
+5. Optionally connect a custom domain
 
-## Deploy on Vercel
+## Cost
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This app uses OpenAI's `gpt-4o-mini` model which is extremely affordable:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ~$0.15 per 1M input tokens, ~$0.60 per 1M output tokens
+- A typical recruiter conversation (10 messages) costs less than $0.01
+- Even with 100 recruiters/month, total AI cost is under $1
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) — React framework with App Router
+- [Tailwind CSS](https://tailwindcss.com) — Utility-first CSS
+- [Vercel AI SDK](https://ai-sdk.dev) — AI streaming and chat hooks
+- [OpenAI](https://openai.com) — GPT-4o-mini language model
+- [Framer Motion](https://www.framer.com/motion) — Animations
+- [Lucide Icons](https://lucide.dev) — Icon library
+- [next-themes](https://github.com/pacocoursey/next-themes) — Dark mode
+
+## License
+
+MIT
