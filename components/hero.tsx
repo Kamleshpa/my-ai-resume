@@ -40,21 +40,6 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        {/* Status badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-card-border bg-card/50 px-4 py-1.5 text-sm text-muted backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            Open to new opportunities
-          </span>
-        </motion.div>
-
         {/* Name & Title */}
         <motion.h1
           className="mt-8 text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"

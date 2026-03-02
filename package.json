@@ -11,6 +11,8 @@
   "dependencies": {
     "@ai-sdk/openai": "^3.0.29",
     "@ai-sdk/react": "^3.0.88",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.36.3",
     "ai": "^6.0.86",
     "framer-motion": "^12.34.0",
     "lucide-react": "^0.564.0",

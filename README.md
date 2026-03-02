@@ -31,6 +31,22 @@ OPENAI_API_KEY=sk-your-actual-api-key-here
 
 Get a key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 
+### (Optional) Add Rate Limiting
+
+To protect against bot abuse and API exhaustion, you can enable rate limiting via [Upstash Redis](https://upstash.com):
+
+1. Create a Redis database at [console.upstash.com](https://console.upstash.com)
+2. Add these to `.env.local`:
+
+```
+UPSTASH_REDIS_REST_URL=https://your-db.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your-token
+```
+
+Without these, the app still enforces input validation and content guardrails—rate limiting is simply disabled.
+
+**Redis eviction:** @upstash/ratelimit sets TTL (PEXPIRE) on keys, so they auto-expire within the rate-limit window (~1 min). No long-term storage. For extra safety under memory pressure, set an eviction policy (e.g. `volatile-lru`) in Upstash Console → your database → Configuration.
+
 ### 3. Customize Your Resume Data
 
 Edit `lib/resume-data.ts` with your real information. This single file powers everything:
@@ -81,6 +97,8 @@ components/
 lib/
   resume-data.ts        — YOUR resume content (edit this!)
   build-system-prompt.ts — Converts resume data to AI system prompt
+  guardrails.ts         — Input validation, content filtering, abuse prevention
+  rate-limit.ts         — Optional IP-based rate limiting (Upstash)
   utils.ts              — Shared utilities
 ```
 
@@ -89,8 +107,9 @@ lib/
 1. Push your code to GitHub
 2. Go to [vercel.com](https://vercel.com) and import your repository
 3. Add the `OPENAI_API_KEY` environment variable in Vercel project settings
-4. Deploy — your site will be live at `your-project.vercel.app`
-5. Optionally connect a custom domain
+4. (Optional) Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for rate limiting
+5. Deploy — your site will be live at `your-project.vercel.app`
+6. Optionally connect a custom domain
 
 ## Cost
 

@@ -85,7 +85,7 @@ export interface ResumeData {
 export const resumeData: ResumeData = {
   personal: {
     name: "Kamlesh Pandey",
-    title: "Lead Software Engineer (VP)",
+    title: "Lead/Principal Software Engineer",
     location: "Seattle, Washington, US",
     email: "kamlesh.world@gmail.com",
     linkedin: "https://www.linkedin.com/in/kamleshpa",

@@ -37,10 +37,13 @@ interface ChatMessagesProps {
 }
 
 export function ChatMessages({ messages, isStreaming }: ChatMessagesProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = scrollContainerRef.current;
+    if (el) {
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    }
   }, [messages, isStreaming]);
 
   if (messages.length === 0 && !isStreaming) {
@@ -62,7 +65,10 @@ export function ChatMessages({ messages, isStreaming }: ChatMessagesProps) {
   }
 
   return (
-    <div className="custom-scrollbar flex-1 space-y-4 overflow-y-auto px-4 py-4">
+    <div
+      ref={scrollContainerRef}
+      className="custom-scrollbar flex-1 space-y-4 overflow-y-auto px-4 py-4"
+    >
       {messages.map((message) => {
         const text = getMessageText(message);
 
@@ -113,8 +119,6 @@ export function ChatMessages({ messages, isStreaming }: ChatMessagesProps) {
       {isStreaming && messages[messages.length - 1]?.role === "user" && (
         <TypingIndicator />
       )}
-
-      <div ref={bottomRef} />
     </div>
   );
 }

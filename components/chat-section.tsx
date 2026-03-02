@@ -8,7 +8,7 @@ import { ChatMessages } from "./chat-messages";
 import { ChatInput } from "./chat-input";
 
 export function ChatSection() {
-  const { messages, sendMessage, status } = useChat();
+  const { messages, sendMessage, status, error } = useChat();
   const [input, setInput] = useState("");
 
   const isStreaming = status === "streaming" || status === "submitted";
@@ -57,6 +57,11 @@ export function ChatSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
+          {error && (
+            <div className="border-b border-amber-500/30 bg-amber-500/10 px-4 py-2 text-center text-sm text-amber-700 dark:text-amber-400">
+              {error.message || "Something went wrong. Please try again."}
+            </div>
+          )}
           <ChatMessages messages={messages} isStreaming={isStreaming} />
           <ChatInput
             input={input}

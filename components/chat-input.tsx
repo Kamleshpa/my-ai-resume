@@ -2,6 +2,7 @@
 
 import { Send } from "lucide-react";
 import { resumeData } from "@/lib/resume-data";
+import { GUARDRAILS } from "@/lib/guardrails";
 
 interface ChatInputProps {
   input: string;
@@ -53,7 +54,7 @@ export function ChatInput({
         <div className="relative flex-1">
           <textarea
             value={input}
-            onChange={(e) => onInputChange(e.target.value)}
+            onChange={(e) => onInputChange(e.target.value.slice(0, GUARDRAILS.MAX_MESSAGE_LENGTH))}
             onKeyDown={handleKeyDown}
             placeholder="Ask me anything about my experience..."
             disabled={isStreaming}
