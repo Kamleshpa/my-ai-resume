@@ -2,7 +2,7 @@
 
 import { resumeData } from "@/lib/resume-data";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Globe, Heart } from "lucide-react";
+import { Mail, Linkedin, Github, Globe, Heart, Download } from "lucide-react";
 
 export function ContactFooter() {
   const { personal } = resumeData;
@@ -76,13 +76,20 @@ export function ContactFooter() {
           </div>
 
           {/* CTA */}
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={`mailto:${personal.email}`}
               className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-3.5 text-sm font-medium text-accent-foreground transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25"
             >
               <Mail size={18} />
               Get in Touch
+            </a>
+            <a
+              href="/api/resume/pdf"
+              className="inline-flex items-center gap-2 rounded-xl border border-card-border bg-card/50 px-8 py-3.5 text-sm font-medium text-foreground transition-all hover:border-accent/30 hover:text-accent"
+            >
+              <Download size={18} />
+              Download Resume (PDF)
             </a>
           </div>
         </motion.div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { resumeData } from "@/lib/resume-data";
-import { MapPin, Briefcase, Code, Building2, ArrowDown, MessageSquare } from "lucide-react";
+import { MapPin, Briefcase, Code, Building2, ArrowDown, MessageSquare, Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Hero() {
@@ -120,10 +120,11 @@ export function Hero() {
             />
           </a>
           <a
-            href="#experience"
-            className="inline-flex items-center gap-2 rounded-xl border border-card-border bg-card/50 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:bg-card"
+            href="/api/resume/pdf"
+            className="inline-flex items-center gap-2 rounded-xl border border-card-border bg-card/50 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-accent/30 hover:bg-card hover:text-accent"
           >
-            View Experience
+            <Download size={18} />
+            Download Resume (PDF)
           </a>
         </motion.div>
       </div>

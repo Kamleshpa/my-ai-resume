@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { resumeData } from "@/lib/resume-data";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -54,6 +54,13 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/api/resume/pdf"
+            className="ml-2 inline-flex items-center gap-1.5 rounded-lg border border-card-border bg-card/50 px-3 py-2 text-sm text-foreground transition-colors hover:border-accent/30 hover:text-accent"
+          >
+            <Download size={14} />
+            Resume
+          </a>
           <div className="ml-2">
             <ThemeToggle />
           </div>
@@ -86,6 +93,14 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/api/resume/pdf"
+              onClick={() => setMobileOpen(false)}
+              className="mt-1 inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-foreground hover:text-accent"
+            >
+              <Download size={14} />
+              Download Resume
+            </a>
           </div>
         </div>
       )}

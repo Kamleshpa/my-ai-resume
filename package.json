@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^3.0.29",
     "@ai-sdk/react": "^3.0.88",
+    "@react-pdf/renderer": "^4.5.1",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.36.3",
     "ai": "^6.0.86",
