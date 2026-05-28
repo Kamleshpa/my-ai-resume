@@ -91,7 +91,7 @@ export const resumeData: ResumeData = {
     linkedin: "https://www.linkedin.com/in/kamleshpa",
     github: "https://github.com/kamleshpa",
     tagline:
-      "I architect and implement scalable data platforms and lead engineering teams at Fortune 500 companies to turn raw data into business intelligence.",
+      "I architect scalable data and AI platforms, lead engineering teams at Fortune 500 companies, and turn complex data into intelligent, self-service experiences for the business.",
     summary:
       "Lead Software Engineer with 19+ years of experience specializing in data platforms, backend services, and automation at scale. Currently leading the data platform for U.S. Bank's spend management application. Previously built Nordstrom's automated data quality, data discovery, and data lineage solutions. I have deep expertise in designing systems that handle massive scale — from 100 TB+ logging platforms ingesting 500K logs/sec to streaming data quality architectures adopted across entire organizations. I thrive at the intersection of engineering leadership, system design, and hands-on building.",
     yearsOfExperience: 19,
