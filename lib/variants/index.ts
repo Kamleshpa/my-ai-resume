@@ -10,9 +10,11 @@ import { resumeData, type ResumeData } from "../resume-data";
 import type { ResumeVariant } from "./types";
 
 import { stripeStaffData } from "./stripe-staff-data";
+import { amazon } from "./amazon";
 
 const variants: ResumeVariant[] = [
   stripeStaffData,
+  amazon,
   // ← add new variants here
 ];
 

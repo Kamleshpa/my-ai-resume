@@ -328,6 +328,28 @@ export const resumeData: ResumeData = {
 
   projects: [
     {
+      name: "Agentic Spend Intelligence Assistant (U.S. Bank)",
+      description:
+        "An agentic AI system for business spend management that lets finance and operations users investigate spend through natural conversation — grounded in the bank's own spend data and policy context, not generic LLM knowledge. The system orchestrates multiple specialized agents (planner, SQL, RAG/context, visualization) that collaborate to answer complex spend questions like \"why did marketing's Q3 spend spike?\" or \"which vendors are trending over budget across business units?\" — returning answers with traceable evidence and charts. Direct evolution of the Conversational AI Analytics Dashboard prototype I built at U.S. Bank, moving from single-shot NL-to-SQL into a true multi-agent workflow.",
+      technologies: [
+        "LLMs (Anthropic Claude / OpenAI)",
+        "Agentic Frameworks",
+        "Multi-Agent Orchestration",
+        "RAG Pipelines",
+        "Vector Databases",
+        "Amazon Redshift",
+        "Python",
+        "AWS",
+      ],
+      highlights: [
+        "Multi-agent architecture: a planner agent decomposes the business question, a SQL agent generates and runs optimized queries against the spend warehouse on Amazon Redshift, a RAG/context agent retrieves vendor metadata and spend-category definitions, and a visualization agent picks the right chart for the result",
+        "RAG pipeline over internal spend context — vendor metadata, spend-category taxonomy, and policy documents — so answers are grounded in the bank's own domain language instead of generic LLM knowledge",
+        "Tool integration: SQL execution against Redshift, chart rendering, and policy lookup are exposed as agent-callable tools with strict input/output contracts and auditable traces",
+        "Designed for non-technical business users — they ask plain-English questions and get accurate, citation-backed answers with the underlying SQL and source documents available on demand for trust and auditability",
+        "Applies the AI/LLM stack — agentic orchestration, tool use, RAG — to a regulated FinTech domain where accuracy, traceability, and not-hallucinating are non-negotiable",
+      ],
+    },
+    {
       name: "Award winning Conversational AI Analytics Dashboard (Hackathon)",
       description:
         "Built an AI-powered analytics dashboard at a hackathon that lets users explore their data through natural conversation — no SQL or BI tooling required. Users ask questions in plain language, the system generates the underlying queries and renders charts and graphs on the fly, and users can pin any visualization to a personal dashboard.",
