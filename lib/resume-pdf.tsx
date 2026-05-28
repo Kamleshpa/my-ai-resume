@@ -5,8 +5,8 @@ import {
   View,
   StyleSheet,
   Link,
-  Font,
 } from "@react-pdf/renderer";
+import type { ReactNode } from "react";
 import { resumeData as baseResumeData, type ResumeData } from "./resume-data";
 
 const colors = {
@@ -151,6 +151,11 @@ const styles = StyleSheet.create({
     color: colors.muted,
     marginBottom: 1,
   },
+  // Nested text style — inherits color/size/lineHeight from the parent <Text>
+  // so a bolded fragment in a bullet keeps the bullet's color and size.
+  bold: {
+    fontFamily: "Helvetica-Bold",
+  },
 });
 
 function formatContact(personal: ResumeData["personal"]) {
@@ -184,8 +189,105 @@ function formatContact(personal: ResumeData["personal"]) {
   return items;
 }
 
+// =============================================================================
+// EMPHASIS — bold tech-stack words and quantitative metrics inside running text
+// =============================================================================
+// Two things get bolded automatically in the PDF body:
+//   1. Tech-stack words (from experience.technologies, projects.technologies,
+//      skills.items, plus a small set of common abbreviations that often
+//      appear in achievements but not always in the structured tech lists).
+//   2. Quantitative metrics — number + unit patterns (e.g. "100+ TB",
+//      "500K logs/sec", "~30%", "10+ teams", "14 months") and a handful of
+//      qualitative scale phrases ("multi-TB", "TB-scale").
+//
+// Bare numbers without a unit ("2020", "10") are intentionally NOT matched —
+// otherwise year ranges and incidental digits would get noisy emphasis.
+
+// Abbreviations that show up in achievement text but aren't always listed
+// verbatim in the technologies arrays.
+const EXTRA_EMPHASIS_WORDS = [
+  "LLM",
+  "RAG",
+  "AI",
+  "ML",
+  "AI/ML",
+  "API",
+  "APIs",
+  "NL-to-SQL",
+  "BI",
+  "DQ",
+];
+
+function buildEmphasisRegex(data: ResumeData): RegExp {
+  const techWords = new Set<string>();
+  for (const exp of data.experience) {
+    for (const t of exp.technologies) techWords.add(t);
+  }
+  for (const proj of data.projects) {
+    for (const t of proj.technologies) techWords.add(t);
+  }
+  for (const skill of data.skills) {
+    for (const item of skill.items) techWords.add(item);
+  }
+  for (const w of EXTRA_EMPHASIS_WORDS) techWords.add(w);
+
+  const escapedTech = [...techWords]
+    // Drop anything with parentheses/slashes-with-spaces-around — those don't
+    // appear verbatim in achievement text and would over-match weirdly.
+    .filter((w) => w && w.length > 1 && /^[\w\s+/&.\-#]+$/.test(w))
+    .sort((a, b) => b.length - a.length)
+    .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+
+  const techAlt =
+    escapedTech.length > 0 ? `\\b(?:${escapedTech.join("|")})\\b` : null;
+
+  // Metric pattern — number followed by a REQUIRED unit/noun. Plus a few
+  // qualitative scale phrases.
+  const metricAlt =
+    "multi-(?:TB|GB|PB)|TB-scale|hours to seconds|" +
+    // Number + unit. Trailing `\+?` after the unit catches "100 TB+" in
+    // addition to "100+ TB".
+    "(?:~|>|<)?\\$?\\d[\\d,]*(?:\\.\\d+)?\\+?\\s*" +
+    "(?:" +
+    "%|TB|GB|PB|MB|KB|TPS|QPS|[KMB]\\b|" +
+    "months?|years?|days?|hours?|seconds?|minutes?|" +
+    "teams?|users?|engineers?|stakeholders?|" +
+    "datasets?|pipelines?|services?|designs?|checks?|sources?|modules?|" +
+    "developer\\s+hours|application\\s+designs|logs?\\/sec" +
+    ")\\+?";
+
+  const combined = techAlt ? `${techAlt}|${metricAlt}` : metricAlt;
+  return new RegExp(combined, "gi");
+}
+
+function emphasize(text: string, regex: RegExp): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let last = 0;
+  // Reset because we share the regex across calls.
+  regex.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > last) {
+      nodes.push(text.slice(last, match.index));
+    }
+    nodes.push(
+      <Text key={match.index} style={styles.bold}>
+        {match[0]}
+      </Text>
+    );
+    last = match.index + match[0].length;
+    // Avoid infinite loop on zero-width matches.
+    if (match[0].length === 0) regex.lastIndex++;
+  }
+  if (last < text.length) {
+    nodes.push(text.slice(last));
+  }
+  return nodes;
+}
+
 export function ResumePdf({ data = baseResumeData }: { data?: ResumeData } = {}) {
   const { personal, experience, skills, education, certifications } = data;
+  const emphasisRegex = buildEmphasisRegex(data);
 
   return (
     <Document
@@ -215,7 +317,9 @@ export function ResumePdf({ data = baseResumeData }: { data?: ResumeData } = {})
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Summary</Text>
-          <Text style={styles.summary}>{personal.summary}</Text>
+          <Text style={styles.summary}>
+            {emphasize(personal.summary, emphasisRegex)}
+          </Text>
         </View>
 
         <View style={styles.section}>
@@ -233,11 +337,15 @@ export function ResumePdf({ data = baseResumeData }: { data?: ResumeData } = {})
                   {exp.startDate} – {exp.endDate}
                 </Text>
               </View>
-              <Text style={styles.description}>{exp.description}</Text>
+              <Text style={styles.description}>
+                {emphasize(exp.description, emphasisRegex)}
+              </Text>
               {exp.achievements.map((a, i) => (
                 <View key={i} style={styles.bulletRow}>
                   <Text style={styles.bullet}>•</Text>
-                  <Text style={styles.bulletText}>{a}</Text>
+                  <Text style={styles.bulletText}>
+                    {emphasize(a, emphasisRegex)}
+                  </Text>
                 </View>
               ))}
               {exp.technologies.length > 0 && (

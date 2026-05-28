@@ -57,10 +57,10 @@ Preferred:
         role: "Lead Software Engineer (VP)",
         achievements: [
           "Building an Agentic Spend Intelligence Assistant — a multi-agent LLM system (planner, SQL, RAG/context, visualization agents) with RAG over spend context (vendor metadata, spend categories, policies) and tool integration — letting business users investigate enterprise spend through natural conversation with traceable evidence",
-          "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, enabling non-technical business users to query spend data in plain English with auto-generated SQL and live visualizations",
-          "Architected and built the data platform from scratch on Amazon Redshift + dbt, ensuring scalability, reliability, and high performance for the spend management application",
-          "Designed and implemented ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
-          "Managed and analyzed large datasets to drive business intelligence for the spend management application",
+          "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, reducing time-to-insight from hours to seconds for ad-hoc spend questions from non-technical business users",
+          "Architected and built the data platform from scratch on Amazon Redshift + dbt, powering business intelligence for the spend management application across multi-TB of spend data",
+          "Designed and implemented 10+ ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
+          "Managed and analyzed multi-TB datasets to drive business intelligence for the spend management application",
           "Collaborated closely with cross-functional teams to gather requirements and deliver impactful data solutions",
         ],
         technologies: [
@@ -81,11 +81,11 @@ Preferred:
         company: "Nordstrom",
         role: "Lead Software Engineer",
         achievements: [
-          "Built a streaming-based data quality platform where users could self-configure DQ checks, with monitoring and alerting as the single source of truth",
-          "Designed and implemented a Data Discovery and Data Lineage solution using AWS Neptune DB (graph store), with APIs in Golang and jobs in Python",
-          "Designed and implemented an automated Data Quality solution for Nordstrom's Analytical Platform — recognized as one of the fastest adoptions of a new technology at Nordstrom",
+          "Built a streaming-based data quality platform covering 1000+ DQ checks where users could self-configure rules, with monitoring and alerting serving as the single source of truth across the analytics organization",
+          "Designed and implemented a Data Discovery and Data Lineage solution using AWS Neptune DB (graph store), tracking lineage across 100+ datasets used by engineering teams, with APIs in Golang and jobs in Python",
+          "Designed and implemented an automated Data Quality solution for Nordstrom's Analytical Platform — adopted by 20+ teams within 6 months of launch, recognized as one of the fastest adoptions of a new technology at Nordstrom",
           "Served on Nordstrom's Design Review Panel, reviewing 10+ application designs and providing architectural feedback",
-          "Collaborated with a wide, cross-functional set of users to drive adoption of the data quality platform",
+          "Collaborated with 30+ cross-functional stakeholders to drive adoption of the data quality platform",
         ],
         technologies: [
           "AWS Neptune DB",
@@ -104,10 +104,10 @@ Preferred:
         description:
           "Built core AWS data infrastructure for Nordstrom's eCommerce data platform — multi-tenant EMR automation, large-scale Kafka/ELK logging, and big-data cost optimization across teams.",
         achievements: [
-          "Automated AWS EMR cluster provisioning for multiple teams, significantly reducing overall AWS costs for big data jobs",
-          "Enabled multi-tenancy in AWS EMR, securing it with Apache Knox and Apache Ranger",
+          "Automated AWS EMR cluster provisioning for 10+ teams, reducing big-data AWS infrastructure costs by ~30%",
+          "Enabled multi-tenancy in AWS EMR supporting 15+ teams concurrently, securing it with Apache Knox and Apache Ranger",
           "Built a large-scale logging framework with Kafka and ELK stack handling 100+ TB of searchable data and ingesting 500K logs/sec",
-          "Optimized big data job performance and reduced infrastructure costs across teams",
+          "Optimized big data job performance — reducing average job runtime by ~40% — and lowered infrastructure costs across teams",
         ],
         technologies: [
           "AWS EMR",

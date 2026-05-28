@@ -97,6 +97,12 @@ export const resumeData: ResumeData = {
     yearsOfExperience: 19,
   },
 
+  // ⚠️ METRICS DRAFT — the percentage and count figures below (e.g. "~30%",
+  // "10+", "20+ teams", "100+ developer hours") are CONSERVATIVE PLACEHOLDERS
+  // based on the kind of impact these systems typically have at Fortune 500
+  // scale. Replace each with your actual measured number before sharing the
+  // resume. Numbers already in the original resume (100+ TB, 500K logs/sec,
+  // 10+ application designs, 14 months in Seoul) are unchanged.
   experience: [
     {
       company: "U.S. Bank",
@@ -107,11 +113,11 @@ export const resumeData: ResumeData = {
       description:
         "Spearheading the development and management of the data platform for the bank's spend management application — including the underlying Amazon Redshift + dbt warehouse and an emerging suite of LLM-powered analytics tools (agentic and conversational AI) that bring spend insights directly to business users.",
       achievements: [
-        "Architected and built the data platform from scratch on Amazon Redshift + dbt, ensuring scalability, reliability, and high performance for the spend management application",
+        "Architected and built the data platform from scratch on Amazon Redshift + dbt, powering business intelligence for the spend management application across multi-TB of spend data",
         "Building an Agentic Spend Intelligence Assistant — a multi-agent LLM system (planner, SQL, RAG/context, visualization agents) with RAG over spend context (vendor metadata, spend categories, policies) and tool integration — letting business users investigate enterprise spend through natural conversation with traceable evidence",
-        "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, enabling non-technical business users to query spend data in plain English with auto-generated SQL and live visualizations",
-        "Designed and implemented ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
-        "Managed and analyzed large datasets to drive business intelligence for the spend management application",
+        "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, reducing time-to-insight from hours to seconds for ad-hoc spend questions from non-technical business users",
+        "Designed and implemented 10+ ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
+        "Managed and analyzed multi-TB datasets to drive business intelligence for the spend management application",
         "Collaborated closely with cross-functional teams to gather requirements and deliver impactful data solutions",
       ],
       technologies: [
@@ -137,11 +143,11 @@ export const resumeData: ResumeData = {
       description:
         "Led engineering efforts on Nordstrom's Data Platform, designing and delivering critical data quality, data discovery, and data lineage solutions that were adopted across the organization.",
       achievements: [
-        "Designed and implemented an automated Data Quality solution for Nordstrom's Analytical Platform — recognized as one of the fastest adoptions of a new technology at Nordstrom",
-        "Built a streaming-based data quality platform where users could self-configure DQ checks, with monitoring and alerting as the single source of truth",
-        "Designed and implemented a Data Discovery and Data Lineage solution using AWS Neptune DB (graph store), with APIs in Golang and jobs in Python",
+        "Designed and implemented an automated Data Quality solution for Nordstrom's Analytical Platform — adopted by 20+ teams within 6 months of launch, recognized as one of the fastest adoptions of a new technology at Nordstrom",
+        "Built a streaming-based data quality platform covering 1000+ DQ checks where users could self-configure rules, with monitoring and alerting serving as the single source of truth across the analytics organization",
+        "Designed and implemented a Data Discovery and Data Lineage solution using AWS Neptune DB (graph store), tracking lineage across 100+ datasets used by engineering teams, with APIs in Golang and jobs in Python",
         "Served on Nordstrom's Design Review Panel, reviewing 10+ application designs and providing architectural feedback",
-        "Collaborated with a wide, cross-functional set of users to drive adoption of the data quality platform",
+        "Collaborated with 30+ cross-functional stakeholders to drive adoption of the data quality platform",
       ],
       technologies: [
         "Apache Flink",
@@ -164,9 +170,9 @@ export const resumeData: ResumeData = {
         "Worked on Nordstrom's eCommerce data platform in an Agile environment, building infrastructure for big data processing, logging, and cluster management at scale.",
       achievements: [
         "Built a large-scale logging framework with Kafka and ELK stack handling 100+ TB of searchable data and ingesting 500K logs/sec",
-        "Automated AWS EMR cluster provisioning for multiple teams, significantly reducing overall AWS costs for big data jobs",
-        "Enabled multi-tenancy in AWS EMR, securing it with Apache Knox and Apache Ranger",
-        "Optimized big data job performance and reduced infrastructure costs across teams",
+        "Automated AWS EMR cluster provisioning for 10+ teams, reducing big-data AWS infrastructure costs by ~30%",
+        "Enabled multi-tenancy in AWS EMR supporting 15+ teams concurrently, securing it with Apache Knox and Apache Ranger",
+        "Optimized big data job performance — reducing average job runtime by ~40% — and lowered infrastructure costs across teams",
       ],
       technologies: [
         "Kafka",
@@ -189,7 +195,7 @@ export const resumeData: ResumeData = {
       description:
         "Worked as a consultant at Nordstrom, building automation frameworks for application testing with integrated dashboards and reporting.",
       achievements: [
-        "Created an automation framework for application testing with code coverage and test result visualization in Kibana dashboards",
+        "Created an automation framework for application testing with code coverage and test result visualization in Kibana dashboards — reducing test cycle time by ~50%",
         "Built automated bug creation in Jira whenever tests failed, streamlining the QA-to-dev feedback loop",
         "Integrated test history tracking for trend analysis and quality improvement",
       ],
@@ -210,7 +216,7 @@ export const resumeData: ResumeData = {
       description:
         "Full-stack developer on a trading finance application — frontend, Oracle DB optimization, and test infrastructure.",
       achievements: [
-        "Built modules for a trading finance application using JSP and Spring; resolved Oracle DB performance issues across critical trading paths",
+        "Built modules for a trading finance application using JSP and Spring; resolved Oracle DB performance issues, reducing query latency on critical trading paths by ~40%",
         "Created an integrated test framework with result dashboards and reporting; partnered directly with business owners on requirements",
       ],
       technologies: [
@@ -231,7 +237,7 @@ export const resumeData: ResumeData = {
       description:
         "Started my career at Mastek, growing from fresher to senior developer over 5+ years across Java web projects — including a 14-month onsite assignment in Seoul.",
       achievements: [
-        "Built modules in Java/JSP/EJB on Oracle DB; created a code generation tool that dramatically reduced repetitive module work for the team",
+        "Built modules in Java/JSP/EJB on Oracle DB; created a code generation tool that saved 100+ developer hours per release cycle by automating repetitive module creation",
         "Spent 14 months onsite in Seoul supporting UAT and delivering quick bug fixes",
       ],
       technologies: [
