@@ -328,6 +328,25 @@ export const resumeData: ResumeData = {
 
   projects: [
     {
+      name: "Award winning Conversational AI Analytics Dashboard (Hackathon)",
+      description:
+        "Built an AI-powered analytics dashboard at a hackathon that lets users explore their data through natural conversation — no SQL or BI tooling required. Users ask questions in plain language, the system generates the underlying queries and renders charts and graphs on the fly, and users can pin any visualization to a personal dashboard.",
+      technologies: [
+        "LLM / Natural Language to SQL",
+        "Python",
+        "Data Visualization",
+        "React",
+        "Conversational AI",
+      ],
+      highlights: [
+        "Natural-language interface that turns plain-English questions into queries and live charts — eliminating the need for SQL expertise or dedicated BI tools",
+        "Auto-generates graphs and visualizations from query results, which users can pin to build their own dashboards",
+        "Democratizes self-service analytics for non-technical users, extending the self-service philosophy from my data quality platform work to the BI/visualization layer",
+        "Won the hackathon for its innovative approach to making data analytics accessible to everyone",
+        "This concept was applied to a real-world use case at U.S. Bank, where I built a prototype of this conversational analytics dashboard for the spend management application, enabling business users to explore their spend data through natural conversation and visualizations without needing SQL or BI tools",
+      ],
+    },
+    {
       name: "Streaming Data Quality Platform",
       description:
         "Designed and built Nordstrom's enterprise-wide streaming-based data quality platform — a self-service system where users can configure DQ checks with monitoring and alerting.",
