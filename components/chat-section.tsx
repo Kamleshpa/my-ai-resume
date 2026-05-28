@@ -1,14 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 import { ChatMessages } from "./chat-messages";
 import { ChatInput } from "./chat-input";
+import { useResumeData } from "@/lib/resume-data-context";
 
 export function ChatSection() {
-  const { messages, sendMessage, status, error } = useChat();
+  const { variantSlug } = useResumeData();
+
+  // Recreate the transport only when the variant slug changes so the
+  // request body always carries the right slug (or no slug, on the base page).
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: "/api/chat",
+        body: variantSlug ? { variantSlug } : undefined,
+      }),
+    [variantSlug]
+  );
+
+  const { messages, sendMessage, status, error } = useChat({ transport });
   const [input, setInput] = useState("");
 
   const isStreaming = status === "streaming" || status === "submitted";

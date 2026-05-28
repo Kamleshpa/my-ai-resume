@@ -1,11 +1,12 @@
 "use client";
 
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Globe, Heart, Download } from "lucide-react";
 
 export function ContactFooter() {
-  const { personal } = resumeData;
+  const { data, pdfUrl } = useResumeData();
+  const { personal } = data;
 
   const links = [
     {
@@ -85,7 +86,7 @@ export function ContactFooter() {
               Get in Touch
             </a>
             <a
-              href="/api/resume/pdf"
+              href={pdfUrl}
               className="inline-flex items-center gap-2 rounded-xl border border-card-border bg-card/50 px-8 py-3.5 text-sm font-medium text-foreground transition-all hover:border-accent/30 hover:text-accent"
             >
               <Download size={18} />

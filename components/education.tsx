@@ -1,11 +1,12 @@
 "use client";
 
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { motion } from "framer-motion";
 import { GraduationCap, Award, ExternalLink } from "lucide-react";
 
 export function Education() {
-  const { education, certifications } = resumeData;
+  const { data } = useResumeData();
+  const { education, certifications } = data;
 
   return (
     <section id="education" className="section-padding">

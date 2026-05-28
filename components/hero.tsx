@@ -1,11 +1,12 @@
 "use client";
 
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { MapPin, Briefcase, Code, Building2, ArrowDown, MessageSquare, Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Hero() {
-  const { personal, experience, skills } = resumeData;
+  const { data, pdfUrl } = useResumeData();
+  const { personal, experience, skills } = data;
 
   const totalCompanies = experience.length;
   const totalTechnologies = new Set(skills.flatMap((s) => s.items)).size;
@@ -120,7 +121,7 @@ export function Hero() {
             />
           </a>
           <a
-            href="/api/resume/pdf"
+            href={pdfUrl}
             className="inline-flex items-center gap-2 rounded-xl border border-card-border bg-card/50 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-accent/30 hover:bg-card hover:text-accent"
           >
             <Download size={18} />

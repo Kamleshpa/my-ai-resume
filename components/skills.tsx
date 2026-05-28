@@ -1,10 +1,11 @@
 "use client";
 
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 export function Skills() {
+  const { data: resumeData } = useResumeData();
   return (
     <section id="skills" className="section-padding">
       <div className="mx-auto max-w-4xl px-6">

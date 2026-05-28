@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
 import { Menu, X, Download } from "lucide-react";
@@ -15,6 +15,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const { data: resumeData, pdfUrl } = useResumeData();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -55,7 +56,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/api/resume/pdf"
+            href={pdfUrl}
             className="ml-2 inline-flex items-center gap-1.5 rounded-lg border border-card-border bg-card/50 px-3 py-2 text-sm text-foreground transition-colors hover:border-accent/30 hover:text-accent"
           >
             <Download size={14} />
@@ -94,7 +95,7 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="/api/resume/pdf"
+              href={pdfUrl}
               onClick={() => setMobileOpen(false)}
               className="mt-1 inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-foreground hover:text-accent"
             >

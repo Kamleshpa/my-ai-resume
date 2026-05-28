@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { resumeData } from "@/lib/resume-data";
+import { useResumeData } from "@/lib/resume-data-context";
 import { motion } from "framer-motion";
 import { Briefcase, ChevronDown, MapPin, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Experience() {
+  const { data: resumeData } = useResumeData();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   return (

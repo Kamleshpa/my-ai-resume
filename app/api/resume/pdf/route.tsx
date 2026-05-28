@@ -1,4 +1,3 @@
-import { createElement } from "react";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { ResumePdf } from "@/lib/resume-pdf";
 import { resumeData } from "@/lib/resume-data";
@@ -14,7 +13,7 @@ function slugify(name: string) {
 }
 
 export async function GET() {
-  const buffer = await renderToBuffer(createElement(ResumePdf));
+  const buffer = await renderToBuffer(<ResumePdf data={resumeData} />);
   const filename = `${slugify(resumeData.personal.name)}-resume.pdf`;
 
   return new Response(new Uint8Array(buffer), {

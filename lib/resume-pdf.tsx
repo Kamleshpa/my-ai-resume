@@ -7,7 +7,7 @@ import {
   Link,
   Font,
 } from "@react-pdf/renderer";
-import { resumeData } from "./resume-data";
+import { resumeData as baseResumeData, type ResumeData } from "./resume-data";
 
 const colors = {
   text: "#111827",
@@ -153,8 +153,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function formatContact() {
-  const { personal } = resumeData;
+function formatContact(personal: ResumeData["personal"]) {
   const items: { key: string; label: string; href?: string }[] = [];
   items.push({ key: "location", label: personal.location });
   items.push({
@@ -185,9 +184,8 @@ function formatContact() {
   return items;
 }
 
-export function ResumePdf() {
-  const { personal, experience, skills, education, certifications } =
-    resumeData;
+export function ResumePdf({ data = baseResumeData }: { data?: ResumeData } = {}) {
+  const { personal, experience, skills, education, certifications } = data;
 
   return (
     <Document
@@ -200,7 +198,7 @@ export function ResumePdf() {
           <Text style={styles.name}>{personal.name}</Text>
           <Text style={styles.title}>{personal.title}</Text>
           <View style={styles.contactRow}>
-            {formatContact().map((item, i, arr) => (
+            {formatContact(personal).map((item, i, arr) => (
               <Text key={item.key} style={styles.contactItem}>
                 {item.href ? (
                   <Link src={item.href} style={styles.link}>

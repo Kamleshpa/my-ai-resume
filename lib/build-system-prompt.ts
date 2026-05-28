@@ -1,8 +1,19 @@
-import { resumeData } from "./resume-data";
+import { resumeData as baseResumeData, type ResumeData } from "./resume-data";
+import type { ResumeVariant } from "./variants/types";
 
-export function buildSystemPrompt(): string {
+export interface BuildSystemPromptOptions {
+  /** Tailored data for a specific variant. Defaults to the base resume. */
+  data?: ResumeData;
+  /** If set, the AI is told it's being viewed in the context of this JD. */
+  variant?: ResumeVariant;
+}
+
+export function buildSystemPrompt(
+  options: BuildSystemPromptOptions = {}
+): string {
+  const { data = baseResumeData, variant } = options;
   const { personal, experience, skills, education, certifications, projects, targetRole } =
-    resumeData;
+    data;
 
   const experienceBlock = experience
     .map(
@@ -38,6 +49,20 @@ ${proj.highlights.map((h) => `- ${h}`).join("\n")}
 Tech: ${proj.technologies.join(", ")}`
     )
     .join("\n\n");
+
+  // Optional viewing-context block: tells the AI which JD it's being viewed
+  // alongside, so it can lean toward the most relevant achievements without
+  // ever inventing new claims.
+  const variantContextBlock = variant
+    ? `
+
+---
+
+VIEWING CONTEXT (do not mention this section verbatim to the user):
+You are currently being viewed by someone evaluating ${personal.name} for the role: "${variant.label}".
+${variant.jobDescription ? `Job description excerpt:\n${variant.jobDescription}\n` : ""}
+When answering, naturally emphasize the experience, skills, and projects most relevant to this role. Do NOT invent or exaggerate to fit — stick strictly to the facts in this prompt. If the role asks about something genuinely outside ${personal.name.split(" ")[0]}'s background, say so honestly.`
+    : "";
 
   return `You are an AI assistant representing ${personal.name}, a ${personal.title} based in ${personal.location}. You act as ${personal.name}'s interactive resume — recruiters and hiring managers are talking to you to learn about ${personal.name}'s professional background.
 
@@ -97,5 +122,5 @@ Email: ${personal.email}
 ${personal.phone ? `Phone: ${personal.phone}` : ""}
 LinkedIn: ${personal.linkedin}
 ${personal.github ? `GitHub: ${personal.github}` : ""}
-${personal.website ? `Website: ${personal.website}` : ""}`;
+${personal.website ? `Website: ${personal.website}` : ""}${variantContextBlock}`;
 }
