@@ -46,6 +46,83 @@ Preferred:
         "Lead Software Engineer with 19+ years of hands-on data engineering experience, deep in the AWS data stack — Redshift, S3, EMR, Neptune, Glue/dbt pipelines, Kafka streaming. Currently leading U.S. Bank's spend-management data platform on Amazon Redshift + dbt, where I'm also building an Agentic Spend Intelligence Assistant — a multi-agent LLM system with RAG over spend context that lets business users investigate enterprise spend through natural conversation, with traceable evidence and charts. Previously built Nordstrom's enterprise-wide streaming data quality platform (Flink/Spark/Kafka on AWS), automated multi-tenant EMR provisioning secured with Apache Knox and Ranger, and a 100 TB+ logging platform on the ELK stack ingesting 500K logs/sec. I bring strong technical leadership — design review panel work, mentoring, cross-functional delivery — and direct hands-on experience applying agentic frameworks, multi-agent orchestration, tool integration, and RAG pipelines to regulated financial data. I'm passionate about huge datasets, AI-driven approaches to unlocking insights, and driving the technical vision for data platforms.",
     },
 
+    // Reorder achievement bullets per role to put the JD-relevant work
+    // first: AI/LLM + AWS data stack at U.S. Bank, AWS Neptune + streaming
+    // big-data at Nordstrom Lead, AWS EMR automation + multi-tenancy at
+    // Nordstrom Senior. Strings copied verbatim from base resume — no
+    // invented claims.
+    experience: [
+      {
+        company: "U.S. Bank",
+        role: "Lead Software Engineer (VP)",
+        achievements: [
+          "Building an Agentic Spend Intelligence Assistant — a multi-agent LLM system (planner, SQL, RAG/context, visualization agents) with RAG over spend context (vendor metadata, spend categories, policies) and tool integration — letting business users investigate enterprise spend through natural conversation with traceable evidence",
+          "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, enabling non-technical business users to query spend data in plain English with auto-generated SQL and live visualizations",
+          "Architected and built the data platform from scratch on Amazon Redshift + dbt, ensuring scalability, reliability, and high performance for the spend management application",
+          "Designed and implemented ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
+          "Managed and analyzed large datasets to drive business intelligence for the spend management application",
+          "Collaborated closely with cross-functional teams to gather requirements and deliver impactful data solutions",
+        ],
+        technologies: [
+          "LLMs",
+          "Agentic Frameworks",
+          "RAG Pipelines",
+          "Multi-Agent Orchestration",
+          "Amazon Redshift",
+          "AWS",
+          "dbt",
+          "ETL Pipelines",
+          "SQL",
+          "Python",
+          "Data Modeling",
+        ],
+      },
+      {
+        company: "Nordstrom",
+        role: "Lead Software Engineer",
+        achievements: [
+          "Built a streaming-based data quality platform where users could self-configure DQ checks, with monitoring and alerting as the single source of truth",
+          "Designed and implemented a Data Discovery and Data Lineage solution using AWS Neptune DB (graph store), with APIs in Golang and jobs in Python",
+          "Designed and implemented an automated Data Quality solution for Nordstrom's Analytical Platform — recognized as one of the fastest adoptions of a new technology at Nordstrom",
+          "Served on Nordstrom's Design Review Panel, reviewing 10+ application designs and providing architectural feedback",
+          "Collaborated with a wide, cross-functional set of users to drive adoption of the data quality platform",
+        ],
+        technologies: [
+          "AWS Neptune DB",
+          "AWS S3",
+          "Apache Spark",
+          "Apache Flink",
+          "Kafka",
+          "Streaming Architecture",
+          "Python",
+          "Golang",
+        ],
+      },
+      {
+        company: "Nordstrom",
+        role: "Senior Software Development Engineer",
+        description:
+          "Built core AWS data infrastructure for Nordstrom's eCommerce data platform — multi-tenant EMR automation, large-scale Kafka/ELK logging, and big-data cost optimization across teams.",
+        achievements: [
+          "Automated AWS EMR cluster provisioning for multiple teams, significantly reducing overall AWS costs for big data jobs",
+          "Enabled multi-tenancy in AWS EMR, securing it with Apache Knox and Apache Ranger",
+          "Built a large-scale logging framework with Kafka and ELK stack handling 100+ TB of searchable data and ingesting 500K logs/sec",
+          "Optimized big data job performance and reduced infrastructure costs across teams",
+        ],
+        technologies: [
+          "AWS EMR",
+          "Apache Knox",
+          "Apache Ranger",
+          "Apache Spark",
+          "Kafka",
+          "Elasticsearch",
+          "Logstash",
+          "Kibana",
+          "Java",
+        ],
+      },
+    ],
+
     // Reordered to surface AWS data stack + big-data + leadership first,
     // matching the JD's basic and preferred qualifications. Items within
     // each category are reordered too (Python/SQL first; Spark/EMR-relevant

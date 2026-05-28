@@ -7,6 +7,7 @@ on top of the base [`lib/resume-data.ts`](../resume-data.ts):
 | Field | What you can change |
 | --- | --- |
 | `personal` | Reword `title`, `tagline`, and `summary` to mirror the JD's framing. Other `PersonalInfo` fields (name, email, links) are locked. |
+| `experience` | Per-role: reorder/filter achievement bullets, reorder tech chips, reword the one-line description. Targets each base entry by `company` + `role`. Order of jobs themselves stays chronological. Copy bullet text verbatim from the base — don't invent new claims. |
 | `skills` | Full replacement — reorder categories and items, drop categories. Don't invent new skills; only re-arrange what's in the base data. |
 | `targetRole` | Partial override — typically just `title` and `pitch` to mirror the JD's language. |
 

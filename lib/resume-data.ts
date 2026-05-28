@@ -105,11 +105,13 @@ export const resumeData: ResumeData = {
       startDate: "Jul 2023",
       endDate: "Present",
       description:
-        "Spearheading the development and management of the data platform for the bank's spend management application. Responsible for design, implementation, and optimization of scalable data solutions driving business intelligence and operational efficiency.",
+        "Spearheading the development and management of the data platform for the bank's spend management application — including the underlying Amazon Redshift + dbt warehouse and an emerging suite of LLM-powered analytics tools (agentic and conversational AI) that bring spend insights directly to business users.",
       achievements: [
-        "Architected and built the data platform from scratch, ensuring scalability, reliability, and high performance",
+        "Architected and built the data platform from scratch on Amazon Redshift + dbt, ensuring scalability, reliability, and high performance for the spend management application",
+        "Building an Agentic Spend Intelligence Assistant — a multi-agent LLM system (planner, SQL, RAG/context, visualization agents) with RAG over spend context (vendor metadata, spend categories, policies) and tool integration — letting business users investigate enterprise spend through natural conversation with traceable evidence",
+        "Prototyped and deployed a Conversational AI Analytics Dashboard on the spend management platform, enabling non-technical business users to query spend data in plain English with auto-generated SQL and live visualizations",
         "Designed and implemented ETL pipelines using Amazon Redshift and dbt to streamline data ingestion, transformation, and loading",
-        "Managed and analyzed large datasets efficiently to drive business intelligence for the spend management application",
+        "Managed and analyzed large datasets to drive business intelligence for the spend management application",
         "Collaborated closely with cross-functional teams to gather requirements and deliver impactful data solutions",
       ],
       technologies: [
@@ -120,6 +122,10 @@ export const resumeData: ResumeData = {
         "Python",
         "SQL",
         "Data Modeling",
+        "LLMs",
+        "Agentic Frameworks",
+        "RAG Pipelines",
+        "Multi-Agent Orchestration",
       ],
     },
     {
@@ -202,12 +208,10 @@ export const resumeData: ResumeData = {
       startDate: "Jun 2012",
       endDate: "Dec 2014",
       description:
-        "Full-stack developer building components for a trading finance application, from frontend modules to database optimization and test infrastructure.",
+        "Full-stack developer on a trading finance application — frontend, Oracle DB optimization, and test infrastructure.",
       achievements: [
-        "Built new modules for a trading finance application using JSP and Spring Framework",
-        "Troubleshot and resolved performance problems in Oracle DB for critical trading systems",
-        "Interacted directly with business owners to develop new functionality and translate requirements into technical solutions",
-        "Created an integrated test framework with result dashboards and reporting for the team",
+        "Built modules for a trading finance application using JSP and Spring; resolved Oracle DB performance issues across critical trading paths",
+        "Created an integrated test framework with result dashboards and reporting; partnered directly with business owners on requirements",
       ],
       technologies: [
         "Java",
@@ -225,12 +229,10 @@ export const resumeData: ResumeData = {
       startDate: "Oct 2006",
       endDate: "Mar 2012",
       description:
-        "Started career at Mastek and grew from a fresher to a senior developer over 5+ years, working across multiple projects and an international onsite assignment.",
+        "Started my career at Mastek, growing from fresher to senior developer over 5+ years across Java web projects — including a 14-month onsite assignment in Seoul.",
       achievements: [
-        "Built new modules in Java Web Applications using JSP, EJB, and Oracle DB",
-        "Created a code generation tool to automate repetitive module creation based on input configuration, dramatically improving team productivity",
-        "Worked onsite in Seoul, South Korea for 14 months, supporting UAT and delivering quick bug fixes",
-        "Progressed from fresher to senior developer through consistent delivery and technical growth",
+        "Built modules in Java/JSP/EJB on Oracle DB; created a code generation tool that dramatically reduced repetitive module work for the team",
+        "Spent 14 months onsite in Seoul supporting UAT and delivering quick bug fixes",
       ],
       technologies: [
         "Java",

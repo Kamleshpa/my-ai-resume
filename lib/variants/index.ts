@@ -36,11 +36,31 @@ export function getVariantBySlug(slug: string): ResumeVariant | undefined {
  */
 export function applyVariant(variant: ResumeVariant): ResumeData {
   const { overrides } = variant;
+
+  // Build a lookup of experience overrides by "company|role". Unknown
+  // (company, role) pairs are silently ignored so a renamed base entry
+  // never breaks an existing recruiter link — it just falls back to the
+  // base bullets.
+  const experienceOverrides = new Map(
+    (overrides.experience ?? []).map((o) => [`${o.company}|${o.role}`, o])
+  );
+  const experience = resumeData.experience.map((exp) => {
+    const o = experienceOverrides.get(`${exp.company}|${exp.role}`);
+    if (!o) return exp;
+    return {
+      ...exp,
+      description: o.description ?? exp.description,
+      achievements: o.achievements ?? exp.achievements,
+      technologies: o.technologies ?? exp.technologies,
+    };
+  });
+
   return {
     ...resumeData,
     personal: overrides.personal
       ? { ...resumeData.personal, ...overrides.personal }
       : resumeData.personal,
+    experience,
     skills: overrides.skills ?? resumeData.skills,
     targetRole: overrides.targetRole
       ? { ...resumeData.targetRole, ...overrides.targetRole }
